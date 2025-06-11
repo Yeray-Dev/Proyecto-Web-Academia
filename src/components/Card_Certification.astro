@@ -1,12 +1,18 @@
 ---
 const { name } = Astro.props
 
-const logo = ["../Logo_Cambridge.svg", null]
+const logo = ["../public/Logo_Cambridge.svg", null]
 let img
 const Arraytext = ["Certificaciones oficiales para todos los niveles según el MCER", null]
 let text
-// name === "Cambridge" ? img = logo[0] && text = Arraytext[0] : logo[1] && Arraytext[1]
-// name === "Cambridge" ? []
+
+if (name === "Cambridge"){
+	img = logo[0]
+	text = Arraytext[0]
+}else if(name === "Trinity"){
+	img = logo[1]
+	text = Arraytext[1]
+}
 
 ---
 
