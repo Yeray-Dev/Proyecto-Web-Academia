@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: 'https://yeray-dev.github.io',
-  base: '/Proyecto-Web-Academia/',
+  base: '/Proyecto-Web-Academia',
 
 
   vite: {
