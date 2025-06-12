@@ -9,6 +9,8 @@ const { icon_emi } = Astro.props;
 const { name_emi } = Astro.props;
 const { addres_emi } = Astro.props;
 const { addres_emi_2 } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <div id="Header">
@@ -46,7 +48,7 @@ const { addres_emi_2 } = Astro.props;
 		pText="DESDE OCTUBRE HASTA JUNIO"
 		/>
 		<CardCurso
-		urlImg="/Imagenes_prueba/Certificados.webp"
+		urlImg=`${base}/Imagenes_prueba/Certificados.webp`
 		h3Text="EXAMENES OFICIALES"
 		h5Text="Exámenes oficiales"
 		pText="CONSULTA TODAS LAS FEHCAS DISPONIBLES PARA ESTE CURSO"
