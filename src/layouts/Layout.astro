@@ -1,3 +1,10 @@
+---
+import GothamBook from '../assets/fonts/Gotham-Book.otf'
+import GothamLight from '../assets/fonts/Gotham-Light.otf'
+import GothamMedium from '../assets/fonts/Gotham-Medium.otf'
+import GothamXNarrow from '../assets/fonts/GothamXNarrow-Light.otf'
+---
+
 <!doctype html>
 <html lang="es">
 	<head>
@@ -30,19 +37,20 @@
 
 @font-face {
 	font-family: 'Gotham-Light';
-	src: url('/fonts/Gotham-Light.otf') format(opentype);
+	src: url({GothamLight}) format('opentype');
 }
 @font-face {
 	font-family: 'GothamXNarrow-Light';
-	src: url('/fonts/GothamXNarrow-Light.otf') format(opentype);
+	src: url('${base}') format('opentype');
 }
 @font-face {
 	font-family: 'Gothan';
-	src: url('/fonts/Gotham-Book.otf') format(opentype);
+	src: url(var(--Gothan)) format('opentype');
 }
 @font-face {
 	font-family: 'Gothan-medium';
-	src: url('/fonts/Gotham-Medium.otf') format(opentype);
+	src: url(var(--GothanMedium)) format('opentype');
 }
 
 </style>
+
