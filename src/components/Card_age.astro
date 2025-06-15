@@ -4,14 +4,14 @@ const { title } = Astro.props;
 const { text } = Astro.props;
 ---
 
-<div>
-	<img src={img} alt="" width="210">
+<div class="w-auto h-auto bg-blue-500">
+	<img class="hidden sm:block" src={img} alt="" width="210">
 	<h3>{title}</h3>
 	<p>{text}</p>
 </div>
 
 <style>
-	div{
+	/* div{
 		
 		width: 300px;
 		height: 360px;
@@ -35,5 +35,5 @@ const { text } = Astro.props;
 		font-size: 18px;
 		font-weight: 100;
 		margin: 0;
-	}
+	} */
 </style>

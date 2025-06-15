@@ -2,30 +2,22 @@
 const { name_emi } = Astro.props
 const { addres_emi } = Astro.props
 const { addres_emi_2 } = Astro.props
+const { class: className = "", ...rest } = Astro.props
 ---
 
-<div>
-	<h3>Escuela Municiapal de Idiomas de {name_emi}</h3>
-	<p>{addres_emi}</p>
-	<p>{addres_emi_2}</p>
+<div class=`text-center ${className}`>
+	<h3 class="text-[20px] md:text-base lg:text-[34px]">Escuela Municiapal de Idiomas de {name_emi}</h3>
+	<p class="text-[12px] md:text-base lg:text-[16px] lg:py-4">{addres_emi}</p>
+	<p class="text-[12px] md:text-base lg:text-[16px]">{addres_emi_2}</p>
 </div>
 
 <style>
-	div{
-		grid-column: 2 / 4; 
-		margin-left: 10%;
-		margin-top: 20px;
-	
-	}
 	h3{
 		color: #00788c;
-		font-size: 34px;
-		line-height: 1.6;
-		margin-bottom: 0px;
+		line-height: 1.3;
 	}
 	p{
-		font-size: 16px;
-		font-family: gotham-book,helvetica,sans-serif;
+		font-family: 'gotham-book',helvetica,sans-serif;
 		font-weight: normal;
 		color: #3c3c3c;
 		line-height: 1.6;

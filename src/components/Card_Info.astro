@@ -1,12 +1,12 @@
 ---
-	const { urlImg } = Astro.props
-	const { h3Text } = Astro.props 
-	const { h5Text } = Astro.props 
-	const { pText } = Astro.props 
+const { urlImg } = Astro.props;
+const { h3Text } = Astro.props;
+const { h5Text } = Astro.props;
+const { pText } = Astro.props;
 ---
 
 <div id="card">
-	<img src={urlImg}>
+	<img src={urlImg} />
 	<h3>
 		{h3Text}
 	</h3>
@@ -18,14 +18,11 @@
 	</p>
 </div>
 
-
-
 <style>
-	*{
+	* {
 		margin: 0;
-
 	}
-	#card{
+	#card {
 		width: 300px;
 		height: 360px;
 		background-color: white;
@@ -33,11 +30,36 @@
 		overflow: hidden;
 		justify-content: center;
 	}
-	img{
-		display: block;
-		padding: 0 15px 0 15px;
+	@media (min-width: 640px) and (max-width: 1023px) {
+		#card {
+			width: 220px;
+			height: 270px;
+		}
+
+		#card h3 {
+			font-size: 14px;
+			padding-top: 14px;
+			padding-bottom: 14px;
+			padding-left: 10px;
+		}
+
+		#card h5 {
+			font-size: 14px;
+			padding-top: 7px;
+			padding-left: 10px;
+		}
+
+		#card p {
+			font-size: 12px;
+			padding-top: 7px;
+			padding-left: 10px;
+		}
 	}
-	h3{
+
+	img {
+		display: block;
+	}
+	h3 {
 		background: linear-gradient(to right, #00788c, #00c9b5);
 		border-bottom-left-radius: 35px;
 		margin: 0;
@@ -45,13 +67,13 @@
 		padding-bottom: 20px;
 		padding-left: 15px;
 		font-size: 20px;
-		font-family:'Gotham', Helvetica, sans-serif;
+		font-family: "Gotham", Helvetica, sans-serif;
 		font-weight: 100;
 		letter-spacing: 1px;
 		color: white;
 	}
-	
-	h5{
+
+	h5 {
 		padding-top: 10px;
 		padding-left: 15px;
 		font-size: 20px;
@@ -60,12 +82,11 @@
 		letter-spacing: 1px;
 		color: #00788c;
 	}
-	p{
+	p {
 		padding-top: 10px;
 		padding-left: 15px;
-		font-size: 16px;
-		font-family: 'Gotham-Light', Helvetica, sans-serif;
+		font-size: 14px;
+		font-family: "Gotham-Light", Helvetica, sans-serif;
 		font-weight: 400;
-
 	}
 </style>
