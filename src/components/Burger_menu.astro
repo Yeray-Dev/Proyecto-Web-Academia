@@ -1,0 +1,192 @@
+---
+const { class: className = "", ...rest } = Astro.props
+const{ 
+	links = [
+		{label: "inicio", href: "/"},
+		{label: "inicio", href: "/"}
+	],
+	icon_emi,
+	bg_lg,
+	bg_md,
+	bg_sd
+} = Astro.props
+import logo from "../assets/logo_gb.svg";
+import ico_x from "../assets/circulo-marca-x.svg";
+
+---
+
+<div class="bars__menu">
+	<span class=`line1__bars-menu ${className}`></span>
+	<span class=`line2__bars-menu ${className}`></span>
+	<span class=`line3__bars-menu ${className}`></span>
+</div>
+<aside id="sidebar" class="sidebar hidden" style={`--bgColor: ${bg_lg}`}>
+	<button id="close-menu" aria-label="Cerrar menú"><img src={ico_x.src} alt="X" ></button>
+	<nav>
+		<ul>
+			{links.map((link) => (
+				<li><a href={link.href}>{link.label}</a></li>
+			))}
+		</ul>
+	</nav>
+	<div class="flex row justify-center mt-18" >
+		<img src={logo.src} alt="GetBrit!" />
+		<img src={icon_emi} alt="" class="w-[180px] ml-6"/>
+	</div>
+</aside>
+<div id="overlay" class="overlay hidden"></div>
+
+<style>
+	*{
+	padding: 0;
+	box-sizing: border-box;
+}
+/* Menu Hamburgesa */
+.bars__menu{
+	position: absolute;
+
+	top: 1.5rem;
+	right: 7rem;
+	width: 30px;
+	height: 30px;
+	transform: scale(1);
+	cursor: pointer;
+}
+.bars__menu span{
+	width: 100%;
+	height: 3px;
+	background-color: #ffffff;
+	margin-top: 6px;
+	transform-origin: 0px 100%;
+	transition: all 200ms;
+}
+.activeline1__bars-menu{
+	transform: rotate(45deg) translate(-2px, 1px);
+}
+.activeline2__bars-menu{
+	opacity: 0;
+	margin-left: -30px;
+}
+.activeline3__bars-menu{
+	transform: rotate(-45deg) translate(-4px, 2px);
+}
+body.menu-open{
+	overflow: hidden;
+}
+/* Sidebar */
+.sidebar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	z-index: 1000;
+	transform: translateX(-100%);
+	transition: opacity 0.3s ease-in-out;
+	padding: 2rem;
+}
+.sidebar.active{
+	transform: translateX(0%);
+}
+#close-menu{
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
+	font-size: 2rem;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 900;
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+}
+.overlay.hidden{
+	opacity: 0;
+	pointer-events: none;
+}
+@media (max-width: 764px){
+	.bars__menu{
+			top: 2.5rem;
+	right: 5rem;
+	}
+	aside{
+			background: linear-gradient(135deg, #00788c 10%,#1f9db4 40%,#439eae 60%, #67b5c3 100% )
+	}
+	nav{
+		padding-top: 5rem;
+		font-size: 2rem;
+		line-height: 1.6;
+		font-family: 'Gothan';
+		font-weight: 600;
+		color: whitesmoke;
+	}
+	ul{
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+}
+@media (min-width: 768px) {
+	.sidebar{
+		width: 300px;
+	}
+}
+@media (min-width: 900px) {
+	aside{
+		background-color: var(--bgColor); 
+	}
+	nav{
+		padding-top: 5rem;
+		font-size: 2rem;
+		line-height: 1.6;
+		font-family: 'Gothan';
+		font-weight: 600;
+		color: rgb(255, 255, 255);
+	}
+	ul{
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		/* justify-content: center; */
+		/* align-items: center; */
+	}
+}
+</style>
+
+<script is:inline>
+	const line1__bars = document.querySelector(".line1__bars-menu")
+	const line2__bars = document.querySelector(".line2__bars-menu")
+	const line3__bars = document.querySelector(".line3__bars-menu")
+	const menuBtn = document.querySelector(".bars__menu")
+	const sidebar = document.querySelector(".sidebar")
+	const overlay = document.querySelector(".overlay")
+	const closeBtn = document.getElementById("close-menu")
+
+	function animateBars(){
+		line1__bars?.classList.toggle("activeline1__bars-menu")
+		line2__bars?.classList.toggle("activeline2__bars-menu")
+		line3__bars?.classList.toggle("activeline3__bars-menu")
+		}
+
+	function toggleMenu(){
+		animateBars()
+
+		sidebar?.classList.toggle("hidden") 
+		sidebar?.classList.toggle("active")
+		overlay?.classList.toggle("hidden")
+		document.body.classList.toggle("menu-open")
+	}
+	menuBtn?.addEventListener("click", toggleMenu)
+	closeBtn?.addEventListener("click", toggleMenu)
+	overlay?.addEventListener("click", toggleMenu)
+</script>

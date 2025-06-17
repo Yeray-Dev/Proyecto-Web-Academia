@@ -1,10 +1,11 @@
 ---
 import logo from "../assets/logo_gb.svg";
-import CardDir from "./Card_Dir.astro";
-import CardCurso from "./Card_Info.astro";
-import YellowButton from "./Yellow_button.astro";
-import CardAge from "./Card_age.astro";
-import CardCertification from "./Card_Certification.astro";
+import CardDir from "./Cards/Card_Dir.astro";
+import CardCurso from "./Cards/Card_Info.astro";
+import YellowButton from "./Buttoms/Yellow_button.astro";
+import CardAge from "./Cards/Card_age.astro";
+import CardCertification from "./Cards/Card_Certification.astro";
+import BurgerMenu from "./Burger_menu.astro";
 import "../styles/global.css";
 const { icon_emi } = Astro.props;
 const { name_emi } = Astro.props;
@@ -14,33 +15,32 @@ const { addres_emi_2 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<div id="Header" class="bg-blueGB h-auto grid grid-cols-2 lg:px-[200px]">
-	<div id="Logos" class="flex pl-4 justify-center">
+<div id="Header" class="bg-blueGB h-auto grid grid-cols-2 ">
+	<div id="Logos" class="flex pl-8 lg:relative lg:left-22">
 		<img src={logo.src} alt="GetBrit!" />
-		<p class="leading-tight pl-1 text-white mt-[6%] mb-[10px] text-[18px]">Escuela Municiapal de</br>
+		<p class="leading-tight pl-1 text-white mt-[6%] mb-[10px] text-[18px] hidden lg:block">Escuela Municiapal de</br>
+		Idiomas de {name_emi}</p>
+		<p class="leading-tight pl-1 text-white mt-[6%] mb-[10px] text-[18px] lg:hidden">Escuela Municiapal</br>
 		Idiomas de {name_emi}</p>
 	</div>
 	<div id="Enlaces" class="hidden lg:block lg:flex justify-center items-center space-x-10 text-white">
-		<a href="/">Inicio</a>
+		<a href=`/`>Inicio</a>
 		<a href="/">Horarios</a>
 		<a href="/">La Escuela</a>
 		<a href="/">Prueba de Nivel</a>
 	</div>
-	<button id="burgerMenu" class="justify-self-end block lg:hidden pr-6 md:pr-[200pxaaaaa]">
-		<?xml version="1.0" encoding="UTF-8"?>
-		<svg class="text-white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="40" height="40">
-		<g>
-			<path fill="currentColor" d="M480,224H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,224,480,224z"/>
-			<path fill="currentColor" d="M32,138.667h448c17.673,0,32-14.327,32-32s-14.327-32-32-32H32c-17.673,0-32,14.327-32,32S14.327,138.667,32,138.667z"/>
-			<path fill="currentColor" d="M480,373.333H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h448c17.673,0,32-14.327,32-32S497.673,373.333,480,373.333z"/>
-		</g>
-	</button>
-		<div id="MobileMenu" class="hidden flex-col gap-3 text-white mt-2 col-span-2 lg:hidden">
-		<a href="/">Inicio</a>
-		<a href="/">Horarios</a>
-		<a href="/">La Escuela</a>
-		<a href="/">Prueba de Nivel</a>
-	</div>
+	<BurgerMenu 
+		client:visible 
+		class="justify-self-end pr-6 block lg:hidden"
+		links={[
+			{label: "Inicio", href:"/"},
+			{label: "Horarios", href:"/"},
+			{label: "La Escuela", href:"/"},
+			{label: "Prueba de Nivel", href:"/"}
+		]}
+		bg_lg = "#00788c"
+		icon_emi = {icon_emi}
+		/>
 </div>
 
 <div class="container grid grid-cols-1 px-4 gap-4 lg:grid-cols-3 lg:pl-[20%] lg:gap-8 pt-4 pb-6 lg:pt-10 lg:pb-8 md:w-fit md:mx-auto">
