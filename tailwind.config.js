@@ -5,7 +5,7 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				azulGB: '#00788c',
+				blueGB: 'var(--color-blueGB)',
 			}
 		},
 	},
