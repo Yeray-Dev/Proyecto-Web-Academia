@@ -9,13 +9,12 @@ const{
 } = Astro.props
 import logo from "../assets/logo_gb.svg";
 import ico_x from "../assets/circulo-marca-x.svg";
-
 ---
 
 <div class="bars__menu">
-	<span class={"line1__bars-menu" + className}></span>
-	<span class={"line2__bars-menu" + className}></span>
-	<span class={"line3__bars-menu" + className}></span>
+	<span class={`line1__bars-menu ${className}`}></span>
+	<span class={`line2__bars-menu ${className}`}></span>
+	<span class={`line3__bars-menu ${className}`}></span>
 </div>
 <aside id="sidebar" class="sidebar hidden">
 	<button id="close-menu" aria-label="Cerrar menú"><img src={ico_x.src} alt="X" ></button>
@@ -41,7 +40,6 @@ import ico_x from "../assets/circulo-marca-x.svg";
 /* Menu Hamburgesa */
 .bars__menu{
 	position: absolute;
-
 	top: 1.5rem;
 	right: 7rem;
 	width: 30px;
@@ -144,7 +142,7 @@ aside{
 		padding-top: 5rem;
 		font-size: 2rem;
 		line-height: 1.6;
-		font-family: 'Gothan';
+		/* font-family: 'Gothan'; */
 		font-weight: 600;
 		color: rgb(255, 255, 255);
 	}
