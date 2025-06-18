@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 
-@theme {
+:root {
 	--color-blueGB: #00788c;
 }
